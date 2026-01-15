@@ -12,12 +12,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-type User struct {
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Email string `json:"email"`
-}
-
 type Message struct {
 	UserName string `json:"userName"`
 	Message  string `json:"message"`
@@ -61,6 +55,10 @@ func main() {
 		}
 		messages = append(messages, msg)
 		json.NewEncoder(w).Encode(msg)
+	})
+
+	r.Delete("/messages", func(w http.ResponseWriter, r *http.Request) {
+		messages = []Message{}
 	})
 
 	if err := http.ListenAndServe(":8080", r); err != nil {
