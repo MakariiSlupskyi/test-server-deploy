@@ -7,7 +7,7 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-RUN go build -o server main.go
+RUN go build -o server ./cmd/api/main.go
 
 # RESULT STEP
 FROM alpine:latest
