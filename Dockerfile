@@ -1,3 +1,4 @@
+# BUILDER STEP
 FROM golang:1.25.3-alpine AS builder
 
 WORKDIR /app
@@ -8,7 +9,7 @@ RUN go mod download
 COPY . .
 RUN go build -o server main.go
 
-
+# RESULT STEP
 FROM alpine:latest
 
 WORKDIR /root/
