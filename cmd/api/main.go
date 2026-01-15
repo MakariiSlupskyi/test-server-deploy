@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -26,8 +27,10 @@ func main() {
 
 	r.Use(middleware.Logger)
 
+	fmt.Print(os.Getenv("FRONTEND_URL"))
+
 	r.Use(cors.Handler(cors.Options{
-		AllowedOrigins:   []string{os.Getenv("FRONTEND_DEV_URL"), os.Getenv("FRONTEND_PROD_URL")},
+		AllowedOrigins:   []string{os.Getenv("FRONTEND_URL")},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type"},
 		ExposedHeaders:   []string{"Link"},
