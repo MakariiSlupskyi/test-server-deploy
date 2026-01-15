@@ -19,7 +19,7 @@ func main() {
 	// }))
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte(`{ "message": "Hello world" }`))
+		w.Write([]byte(`{ "message": "Kolya, I ❤️ u" }`))
 	})
 
 	r.Get("/test", func(w http.ResponseWriter, r *http.Request) {
